@@ -1,0 +1,23 @@
+
+<h1>{{title}}</h1>
+
+<input type="text" [(ngModel)] = "title"/>
+<hr><br>
+
+<p>{{person.name}} {{person.surname + " " + person.age}}</p><hr><br>
+
+
+<h2>Aggiungi una persona</h2>
+<p>Nome: <input type="text" [(ngModel)] = "nPerson.name"></p><br>
+<p>Cognome: <input type="text" [(ngModel)] = "nPerson.surname"></p><br>
+<p>Età: <input type="number" [(ngModel)] = "nPerson.age" min="0"></p><br>
+<button *ngIf="!editMode" (click)="addP()">Aggiumgio alla lista</button>
+<button *ngIf="editMode" (click)="addP()">conferma</button>
+
+
+<div *ngFor = "let person of personList; index as i">
+  <p>{{person.name}} {{person.surname}} {{person.age}} | 
+    <button (click)="delP(i)">elimina</button> | 
+    <button (click)="edit(i)">modifica</button>
+  </p>
+</div>
